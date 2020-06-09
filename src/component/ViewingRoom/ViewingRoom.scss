@@ -1,38 +1,54 @@
+.grow {
+  flex-grow: 1;
+}
+
 .container {
   width: 100%;
   height: 100%;
   background-image: url('/wallpaper.jpg');
   background-repeat: repeat;
-}
 
-.imageContainer {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
+  #max-height {
+    max-height: 100%;
+  }
+  
+  .heightGrid {
+    height: 20%;
+  }
 
-.heightGrid {
-  height: 20%;
-}
+  .widthContainer {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    position: relative;
 
-.lanternOverlay {
-  position: absolute;
-  top: 0;
-}
+    .imageContainer {
+      position: relative;
+    }
 
-.crop {
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
-  border-radius: 3px;
-}
+    .lanternLandscape {
+      position: absolute;
+      top: 0;
+    }
+    
+    .lanternPortrait {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      // transform: translateY(+20%);
+    }
+    
+    .image {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
 
-.crop #viewing-image {
-  margin: -5px 0 0 -5px;
-  max-width: calc(100% + 10px);
-  max-height: calc(100% + 10px);
-  box-shadow: 0 10px 10px 2px rgba(0, 0, 0, 1);
-  filter: brightness(0.8);
+      border-radius: 3px;
+      box-shadow: 1px 5px 10px 2px rgba(0, 0, 0, 1);
+      filter: brightness(0.9);
+    }
+  }
 }
