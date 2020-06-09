@@ -48,10 +48,6 @@ export default function ViewingRoom({ src, brightness }: { src: string, brightne
     }
   }, [containerDimension, imgDimension]);
 
-  React.useEffect(() => {
-    console.log(size);
-  }, [size]);
-
   return (
     <Grid container className="container">
       <Grid item xs={2} sm={3} />
