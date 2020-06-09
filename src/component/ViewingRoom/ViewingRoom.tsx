@@ -18,7 +18,7 @@ const useWindowSize = () => {
 
 export default function ViewingRoom({ src, brightness }: { src: string, brightness: number }) {
   const [imgDimension, setImgDimension] = React.useState<number[]>([]);
-  const [size, setSize] = React.useState<number[]>([]);
+  const [size, setSize] = React.useState<number[]>([0, 0]);
   const [containerDimension, setContainerDimension] = React.useState<number[]>([]);
   const [innerWidth, innerHeight] = useWindowSize();
 
@@ -41,12 +41,16 @@ export default function ViewingRoom({ src, brightness }: { src: string, brightne
   }, [innerWidth, innerHeight]);
 
   React.useEffect(() => {
-    if (imgDimension[2] && containerDimension[2] > imgDimension[2]) {
+    if (containerDimension[2] > imgDimension[2]) {
       setSize([containerDimension[1] * imgDimension[2], containerDimension[1]]);
     } else {
-      setSize([containerDimension[0], containerDimension[0] / imgDimension[2]]);
+      setSize([containerDimension[0], containerDimension[0] / imgDimension[2] || 0]);
     }
   }, [containerDimension, imgDimension]);
+
+  React.useEffect(() => {
+    console.log(size);
+  }, [size]);
 
   return (
     <Grid container className="container">
@@ -55,7 +59,7 @@ export default function ViewingRoom({ src, brightness }: { src: string, brightne
         <Grid item className="heightGrid" />
         <Grid container item xs className="widthContainer">
           <div className="imageContainer">
-            {size[1] && imgDimension[2] > 1
+            {imgDimension[2] > 1
               ? (
                 <>
                   <img src={`${process.env.PUBLIC_URL}/lantern.png`} alt="lantern" className="lantern" style={{ height: size[1], left: 0, transform: 'translate(0%, -50%)' }} />
