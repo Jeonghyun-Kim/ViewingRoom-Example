@@ -1,7 +1,3 @@
-.grow {
-  flex-grow: 1;
-}
-
 .container {
   width: 100%;
   height: 100%;
@@ -25,30 +21,24 @@
 
     .imageContainer {
       position: relative;
-    }
 
-    .lanternLandscape {
-      position: absolute;
-      top: 0;
-    }
-    
-    .lanternPortrait {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 0;
-      // transform: translateY(+20%);
-    }
-    
-    .image {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-
-      border-radius: 3px;
-      box-shadow: 1px 5px 10px 2px rgba(0, 0, 0, 1);
-      filter: brightness(0.9);
+      .lantern {
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        filter: brightness(2);
+      }
+      
+      .image {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+  
+        border-radius: 3px;
+        box-shadow: 1px 5px 10px 2px rgba(0, 0, 0, 1);
+      }
     }
   }
 }
