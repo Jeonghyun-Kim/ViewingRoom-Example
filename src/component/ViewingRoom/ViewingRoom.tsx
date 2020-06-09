@@ -16,7 +16,7 @@ const useWindowSize = () => {
   return size;
 };
 
-export default function ViewingRoom({ src, brightness }: { src: string, brightness: number }) {
+export default function ViewingRoom({ src, brightness = 1 }: { src: string, brightness?: number }) {
   const [imgDimension, setImgDimension] = React.useState<number[]>([]);
   const [size, setSize] = React.useState<number[]>([0, 0]);
   const [containerDimension, setContainerDimension] = React.useState<number[]>([]);
@@ -67,7 +67,7 @@ export default function ViewingRoom({ src, brightness }: { src: string, brightne
             <img
               src={src}
               alt="ViewingRoomImage"
-              style={{ width: size[0], height: size[1], filter: `brightness(${brightness})` }}
+              style={{ width: size[0], height: size[1], filter: `brightness(${brightness * 0.8})` }}
               className="image"
             />
           </div>
